@@ -1,0 +1,62 @@
+.main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    flex-direction: column;
+}
+
+.container {
+    background-color:whitesmoke;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 0 1em white;
+    transition: height 0.25s ease-in;
+}
+
+.div-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.l-title {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.l-register-title {
+    font-size: 16px;
+    font-weight: bold;
+    transition: display 0.25s ease-in;
+}
+
+.err-mes {
+    height: 20px;
+    text-align: center;
+    color: #FF6869;
+}
+
+.login-btns {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.register-btn {
+    background-color: transparent;
+    color: var(--main-color);
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.btn-pass:focus {
+    outline: none;
+    box-shadow: none;
+}

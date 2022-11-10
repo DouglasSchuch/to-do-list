@@ -1,0 +1,77 @@
+<div class="main">
+    <div class="container">
+        <div class="h-lists">
+            <div class="h-lists-title">Listas</div>
+
+            <div fxFlex style="overflow: auto;">
+                <mat-list *ngIf="lists.length" role="list" style="height: 100%; padding: 0 !important;">
+                    <mat-list-item *ngFor="let list of lists" style="color: var(--color-100); border-bottom: var(--color-100) solid 1px;">
+                        <div style="display: flex; align-items: center; width: 100%; cursor: pointer;" (click)="clickList(list)">
+                            <div fxFlex>{{list.name}}</div>
+                            
+                            <div style="display: flex; align-items: center; width: 40px;">
+                                <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">.st0{fill:#134563;}</style><g><g id="Icon-Chevron-Left" transform="translate(237.000000, 335.000000)"><polyline class="st0" id="Fill-35" points="-210.9,-289 -212.9,-291 -201.1,-302.7 -212.9,-314.4 -210.9,-316.4 -197.1,-302.7-210.9,-289"/></g></g></svg>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div class="div-btn-add">
+                <button fxFlex mat-button type="button" class="secondary-btn logout-btn" [style.width]="'80px'" (click)="onLogout()">Logout</button>
+                <button mat-button type="button" class="default-btn" [style.width]="'150px'" (click)="onAddList()">Adicionar Lista</button>
+            </div>
+        </div>
+        
+        <div class="h-list">
+            <div style="display: flex; flex-direction: column; height: 100%;">
+                <form *ngIf="formAdd && addList" [formGroup]="formAdd" class="form" novalidate>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Nome" formControlName="name">
+                    </mat-form-field>
+                    <div class="div-btn-add">
+                        <button *ngIf="addList" mat-button type="button" [disabled]="!formAdd?.get('name')?.value" class="default-btn" (click)="onCreateList()">Adicionar Lista</button>
+                    </div>
+                </form>
+
+                <div *ngIf="!addList && selectedList" style="max-height: 100%;">
+                    <div style="padding: 5px;">
+                        <div fxFlex class="h-lists-title">
+                            {{selectedList.name}}
+                        </div>
+
+                        <div>
+                            <button mat-button type="button" class="secondary-btn" (click)="onRemoveList()" matTooltip="Remover lista">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <mat-list style="overflow: auto; max-height: calc(65% - 80px);">
+                        <mat-list-item *ngFor="let task of selectedList.tasks">
+                            <div>
+                                <button mat-button type="button" class="secondary-btn" (click)="onRemoveTask(task.id)" matTooltip="Remover tarefa">
+                                    <mat-icon>remove_circle</mat-icon>
+                                </button>
+                            </div>
+                            <div fxFlex>{{task.description}}</div>
+                        </mat-list-item>
+                    </mat-list>
+
+                    <form *ngIf="formEdit" [formGroup]="formEdit" class="form" novalidate>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Descrição</mat-label>
+                            <input matInput placeholder="Descrição" formControlName="description">
+                        </mat-form-field>
+                    </form>
+                        
+                    <div class="div-btn-add">
+                        <button *ngIf="!addList && !formEdit" mat-button type="button" class="default-btn" (click)="onCreateTask()">Adicionar Tarefa</button>
+                        <button *ngIf="!addList && formEdit" mat-button type="button" class="default-btn" (click)="onSaveTask()">Salvar Tarefa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

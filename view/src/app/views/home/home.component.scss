@@ -1,0 +1,49 @@
+.main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    flex-direction: column;
+}
+
+.container {
+    background-color:whitesmoke;
+    width: 60%;
+    height: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 1em white;
+    transition: height 0.25s ease-in;
+    display: flex;
+}
+
+.h-lists {
+    width: 300px;
+    background-color: lightgray;
+    flex-direction: column;
+}
+
+.h-lists-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+    height: 50px;
+}
+
+.h-list {
+    flex: 1;
+    background-color: white;
+}
+
+.div-btn-add {
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+    height: 40px;
+}
+
+.logout-btn {
+    margin-right: 30px;
+}
