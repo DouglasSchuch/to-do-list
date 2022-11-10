@@ -7,7 +7,6 @@ $ npm install
 ## 2 - Rodar o sistema
 
 ```bash
-# development
 $ npm start
 ```
 
